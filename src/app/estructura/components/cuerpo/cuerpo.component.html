@@ -1,0 +1,49 @@
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-8">
+            <div class="card sombra-multicolor">
+                <h3 class="card-title p-2">Lista de héroes</h3>
+                <div class="card-body p-2">
+                    <div *ngIf="hayHeroes()">
+                        <p>{{listadoHeroes | json}}</p>
+                    </div>
+                    <div *ngIf="!hayHeroes()" class="alert alert-danger">
+                        <span>No hay héroes todavía en la lista</span>
+                    </div>
+                </div>
+                <img class="card-img-bottom" src="/assets/img/descarga.jpg" alt="Banner de la tarjeta" />
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row p-5">
+        <div class="col"></div>
+        <div class="col-8">
+            <div class="card sombra-multicolor">
+                <h3 class="card-title p-2">Lista de héroes</h3>
+                <div class="card-body p-2">
+                    <div *ngIf="hayHeroes()">
+                        <ul class="list-group">
+                            <ng-container *ngFor="let heroe of listadoHeroes">
+                                <li *ngIf="heroe.vida > 0" class="list-group-item" [class]="
+                                    { 
+                                        'bg-success' : heroe.vida > 0, 
+                                        'bg-danger' : heroe.vida <=0 
+                                    }">
+                                    {{heroe.nombre}} ({{heroe.vida}})
+                                </li>
+                            </ng-container>
+
+                        </ul>
+                    </div>
+                    <div *ngIf="!hayHeroes()" class="alert alert-danger">
+                        <span>No hay héroes todavía en la lista</span>
+                    </div>
+                </div>
+                <img class="card-img-bottom" src="/assets/img/descarga.jpg" alt="Banner de la tarjeta" />
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
